@@ -6,10 +6,9 @@ void main() {
     int set= (freq[i]/5).floor();
     output.add("${char[i]} :");
     for(int j=0;j<set;j++){
-      if(j==set-1&&freq[i]%5==0){
-        output[i] += "-----";
-      }else{
-        output[i] += "-----|";
+      output[i] += "-----";
+      if(j!=set-1||freq[i]%5!=0){
+        output[i] += "|";
       }
     }
     for(int k=0;k<freq[i]%5;k++){
@@ -18,3 +17,4 @@ void main() {
     print(output[i]);
   }
 }
+
