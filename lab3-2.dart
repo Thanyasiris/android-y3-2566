@@ -1,31 +1,30 @@
 void main() {
-  String str = "aaAAAcsh";
+  String str = "aaaLbbbbbLcccccccccLdddddddddddLeeeeeeeeeeeeeeeeeee";
+  print("input : $str");
+  int j=0, f=0;
+  List<String> output=[];
   List<String> char = str.split('');
+  char.removeWhere((item) => item == " ");
   char.sort();
-  print(char);
-  for(int i=0;i<char.length;i++){
-    if(char[i].codeUnitAt(0)>=65&&char[i].codeUnitAt(0)<=90){
-      char.add(char[0]);
-      char.removeAt(0);
+  while(char[0].codeUnitAt(0)>=65&&char[0].codeUnitAt(0)<=90){
+    char.add(char[0]);
+    char.removeAt(0);
+  }
+  output.add("${char[0]} : -");
+  for(int i = 1; i < char.length ; i++) {
+    if(char[i]!=char[i-1]){
+      output.add("${char[i]} : -");
+      j++;
+      f=0;
     }else{
-      i=char.length;
+      f++;
+      if(f%5==0){
+        output[j] += "|";
+      }
+      output[j] += "-";
     }
   }
-  print(char);
-//   List<int> freq = [3,5,9,11,19];
-//   List<String> output=[];
-//   for (int i = 0; i < char.length ; i++) {
-//     int set= (freq[i]/5).floor();
-//     output.add("${char[i]} :");
-//     for(int j=0;j<set;j++){
-//       output[i] += "-----";
-//       if(j!=set-1||freq[i]%5!=0){
-//         output[i] += "|";
-//       }
-//     }
-//     for(int k=0;k<freq[i]%5;k++){
-//       output[i] += "-";
-//     }
-//     print(output[i]);
-//   }
+  for(var each in output){
+    print(each);
+  }
 }
